@@ -1,11 +1,12 @@
-const listaPalabras = ['bandera', 'garaje', 'amarillo', 'gaviota', 'carretera', 'zapatillas'];
-const palabra = listaPalabras[Math.floor(Math.random() * (listaPalabras.length))];
 const huecoPalabra = document.querySelector(".palabra-secreta .letras");
 const huecoVidas = document.querySelectorAll(".vidas");
 const huecoYaUsada = document.querySelector(".letras-ya-usadas .letras");
+const nuevaPartida = document.querySelector("button");
 
-const palabraMostrada = [];
-const letrasYaUsadas = [];
+const listaPalabras = ['bandera', 'garaje', 'amarillo', 'gaviota', 'carretera', 'zapatillas'];
+
+let palabra = listaPalabras[Math.floor(Math.random() * (listaPalabras.length))];
+let letrasYaUsadas = [];
 let vidas = 5;
 let juegoTerminado = false;
 let letrasPorAdivinar = palabra.length;
@@ -60,6 +61,18 @@ function pulsarBoton (e) {
 
 // Inicia la partida. Se ejecuta al cargar la página y al pulsar el botón nueva partida
 function iniciarJuego() {
+    letrasYaUsadas = [];
+    vidas = 5;
+    juegoTerminado = false;
+    letrasPorAdivinar = palabra.length;
+    palabra = listaPalabras[Math.floor(Math.random() * (listaPalabras.length))];
+    
+    while (huecoPalabra.firstChild) {
+        huecoPalabra.removeChild(huecoPalabra.firstChild);
+    }
+    while (huecoYaUsada.firstChild) {
+        huecoYaUsada.removeChild(huecoYaUsada.firstChild);
+    }
     // Crea un "li" en blanco por cada letra que tenga la palabra secreta
     palabra.split("").forEach( letra => {
         huecoPalabra.appendChild(document.createElement("li"));
@@ -70,3 +83,4 @@ function iniciarJuego() {
 
 iniciarJuego();
 window.addEventListener("keyup", pulsarBoton);
+nuevaPartida.addEventListener("click", iniciarJuego);

@@ -1,16 +1,25 @@
+
 body {
-	background-color: #5F909C;
-	font-family: tahoma, sans-serif;
+    
+	background-color: #eee;
 	margin: 0;
 	padding: 0;
+    font-family: 'Niramit', sans-serif;
 }
 
 .cabecera {
 	text-transform: uppercase;
-	background-color: #25616E;
-	color: #F3573B;
+	background-color: #ddd;
 	text-align: center;
-	padding: 20px 0;
+    border-bottom: 3px solid #444;
+}
+
+.cabecera h1 {
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    color: #444;
+    margin: 0;
+    padding-top: 25px;
 }
 
 .contenedor {
@@ -21,21 +30,23 @@ body {
 
 .vidas {
     text-align: center;
-    margin: 60px 0;
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .vidas img {
     max-width: 60px;
 }
 
+.palabra-secreta {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .letras {
     display: flex;
     justify-content: center;
     margin: 0;
-    padding: 0;
-}
-.letras-ya-usadas {
-    margin-top: 40px;
     padding: 0;
 }
 
@@ -53,12 +64,55 @@ body {
     border-radius: 5px;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     box-shadow: 6px 6px 3px rgba(0,0,0,0.4);
+    font-family: 'Merriweather', serif;
     
+}
+
+.letras-ya-usadas {
+    margin: 20px auto;
+    height: 80px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    position: relative;
+}
+
+.letras-ya-usadas p {
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    margin: 0;
+    padding: 5px;
+    background-color: #eee;
 }
 
 .letras-ya-usadas .letras li {
     background-color: #ffcfcf;
+    margin: 15px;
     height: 40px;
     min-width: 20px;
     font-size: 2em;
+}
+
+.mensaje {
+    display: none;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    font-family: 'Niramit', sans-serif;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 1em;
+}
+
+button:hover {
+    cursor: pointer;
 }

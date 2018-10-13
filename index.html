@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
 	<title>Ahorcado</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Niramit:200,500" rel="stylesheet">
 </head>
 <body>
 	<div class="cabecera">
 		<h1>El juego del ahorcado</h1>
 	</div>
 	<div class="contenedor">
+		<div class="palabra-secreta">
+            <ul class="letras">
+                
+            </ul>
+		</div>
+        <div class="letras-ya-usadas">
+            <p>Letras ya usadas</p>
+            <ul class="letras">
+            </ul>
+        </div>
         <div class="vidas">
             <img src="heart.png">
             <img src="heart.png">
@@ -17,15 +28,7 @@
             <img src="heart.png">
             <img src="heart.png">
         </div>
-		<div class="palabra-secreta">
-            <ul class="letras">
-                
-            </ul>
-		</div>
-        <div class="letras-ya-usadas">
-            <ul class="letras">
-            </ul>
-        </div>
+        <h3 class="mensaje"></h3>
         <button>Nueva Partida</button>
 	</div>
 	

@@ -2,6 +2,7 @@ const huecoPalabra = document.querySelector(".palabra-secreta .letras");
 const huecoVidas = document.querySelectorAll(".vidas");
 const huecoYaUsada = document.querySelector(".letras-ya-usadas .letras");
 const nuevaPartida = document.querySelector("button");
+const mensaje = document.querySelector(".mensaje");
 
 const listaPalabras = ['bandera', 'garaje', 'amarillo', 'gaviota', 'carretera', 'zapatillas'];
 
@@ -30,8 +31,10 @@ function pulsarBoton (e) {
                 
             // Comprueba si ya has acertado todas las letras y termina la partida
             if (letrasPorAdivinar === 0) {
-                juegoTerminado = true;
-                console.log ("Has ganado!");
+                juegoTerminado = true;                
+                mensaje.innerHTML = "Has ganado";
+                mensaje.setAttribute("style", "display:block");
+                huecoLetras.forEach(letra => letra.setAttribute("style", "background-color: green"));
             } 
 
 
@@ -49,7 +52,8 @@ function pulsarBoton (e) {
             vidas -= 1;
             // Comprueba si te has quedado sin vidas
             if (vidas === 0) {
-                console.log("Fin de la partida. Inténtalo de nuevo!");
+                mensaje.innerHTML = "Fin de la partida. Inténtalo de nuevo!";
+                mensaje.setAttribute("style", "display:block");
                 juegoTerminado = true;
             } else {
                 console.log(`Te quedan ${vidas} vidas`);
@@ -61,18 +65,27 @@ function pulsarBoton (e) {
 
 // Inicia la partida. Se ejecuta al cargar la página y al pulsar el botón nueva partida
 function iniciarJuego() {
+    // Reinicia todas la variables
     letrasYaUsadas = [];
     vidas = 5;
     juegoTerminado = false;
     letrasPorAdivinar = palabra.length;
     palabra = listaPalabras[Math.floor(Math.random() * (listaPalabras.length))];
-    
+    // Elimina la palabra anterior
     while (huecoPalabra.firstChild) {
         huecoPalabra.removeChild(huecoPalabra.firstChild);
     }
+    // Elimina las letras ya usadas
     while (huecoYaUsada.firstChild) {
         huecoYaUsada.removeChild(huecoYaUsada.firstChild);
     }
+    // Vuelve a poner los cinco corazones
+    while(document.querySelectorAll(".vidas img").length < 5) {
+        document.querySelector(".vidas").appendChild(document.createElement("img"));
+        document.querySelector(".vidas").lastChild.setAttribute("src", "heart.png");
+    }
+    // Quita el mensaje que haya en ese momento
+    document.querySelector(".mensaje").setAttribute("style", "display:none");
     // Crea un "li" en blanco por cada letra que tenga la palabra secreta
     palabra.split("").forEach( letra => {
         huecoPalabra.appendChild(document.createElement("li"));
